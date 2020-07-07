@@ -22,7 +22,7 @@ public class PlayerMovementComponent : MonoBehaviour
     private void HandleMovement(Vector2 inputVector)
     {
         Vector2 oldPosition = transform.position;
-        Vector2 newPosition = oldPosition + (inputVector * Speed * Time.deltaTime);
+        Vector2 newPosition = new Vector2(oldPosition.x + (inputVector.x * Speed * Time.deltaTime), oldPosition.y);
         transform.position = newPosition;
     }
 }
