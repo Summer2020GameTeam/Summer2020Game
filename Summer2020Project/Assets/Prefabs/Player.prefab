@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 6999324258872591378}
   - component: {fileID: 6999324258872591379}
   - component: {fileID: 1776099563091026405}
+  - component: {fileID: 8300455214844820439}
   - component: {fileID: 7182280133550685254}
   m_Layer: 0
   m_Name: Player
@@ -125,6 +126,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbc5044d3770df42b19b481be48c048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 10
+--- !u!114 &8300455214844820439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999324258872592365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30b135c0a8de6945bde338fe2583bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerMultiplier: 1
+  JumpPower: 150
+  DefaultGravity: 1
+  HeavyGravity: 2
 --- !u!114 &7182280133550685254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,10 +186,6 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: c9ae5d4a-ca2d-4d32-ac16-0e0125e849bb
-    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 115b4f96-8688-4962-87fa-a124677d1bab
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -210,6 +224,21 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a7c4061d-6caf-4b09-9f5d-bf5b5c4c3da8
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8300455214844820439}
+        m_MethodName: HandleInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1d259ed6-c87e-4945-996a-6fa02de37000
+    m_ActionName: Player/Jump[/Keyboard/w,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
