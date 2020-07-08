@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2825368118425380322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6502570604830209460}
+  m_Layer: 0
+  m_Name: GroundCheckTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6502570604830209460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825368118425380322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6999324258872591378}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6999324257820305018
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,7 +98,7 @@ GameObject:
   - component: {fileID: 6999324258872591378}
   - component: {fileID: 6999324258872591379}
   - component: {fileID: 1776099563091026405}
-  - component: {fileID: 8300455214844820439}
+  - component: {fileID: 6195488418614780118}
   - component: {fileID: 7182280133550685254}
   m_Layer: 0
   m_Name: Player
@@ -90,6 +120,7 @@ Transform:
   m_Children:
   - {fileID: 6999324259463563044}
   - {fileID: 6999324257820305019}
+  - {fileID: 6502570604830209460}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,7 +139,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -127,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
---- !u!114 &8300455214844820439
+--- !u!114 &6195488418614780118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,13 +167,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6999324258872592365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30b135c0a8de6945bde338fe2583bf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 27c462a8f89d87b48859ebf458bd8e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerMultiplier: 1
-  JumpPower: 150
-  DefaultGravity: 1
-  HeavyGravity: 2
+  JumpForce: 150
+  JumpTime: 1
+  BaseGravity: 2.3
+  JumpGravity: 1
 --- !u!114 &7182280133550685254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +257,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8300455214844820439}
+      - m_Target: {fileID: 6195488418614780118}
         m_MethodName: HandleInput
         m_Mode: 0
         m_Arguments:
