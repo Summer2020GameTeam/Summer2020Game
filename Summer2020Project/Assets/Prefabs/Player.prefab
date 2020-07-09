@@ -41,8 +41,10 @@ GameObject:
   - component: {fileID: 6999324258872591378}
   - component: {fileID: 6999324258872591379}
   - component: {fileID: 6542228942720868658}
+  - component: {fileID: 6335538360832556997}
   - component: {fileID: 1776099563091026405}
   - component: {fileID: 6195488418614780118}
+  - component: {fileID: 6087931244509109886}
   - component: {fileID: 7182280133550685254}
   m_Layer: 0
   m_Name: Player
@@ -114,6 +116,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0.1
+--- !u!114 &6335538360832556997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999324258872592365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e164e84bbc98b4782a342ee62e6988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FacingDirection: 0
 --- !u!114 &1776099563091026405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,11 +154,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c462a8f89d87b48859ebf458bd8e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 150
-  JumpTime: 1
+  JumpForce: 400
+  JumpTime: 0.4
   currentJumpTime: 0
   BaseGravity: 2.3
-  JumpGravity: 1
+  JumpGravity: 0.2
+--- !u!114 &6087931244509109886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999324258872592365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e79d8f474d179145b873bfb61b23ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashCooldown: 2
+  DashSpeed: 50
+  DashTime: 0.1
 --- !u!114 &7182280133550685254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +270,25 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1d259ed6-c87e-4945-996a-6fa02de37000
     m_ActionName: Player/Jump[/Keyboard/w,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6087931244509109886}
+        m_MethodName: HandleInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1e736614-fa0e-43a2-8179-78e7f31d4f47
+    m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b2326c55-f1e2-49c9-bead-9a52d4b70219
+    m_ActionName: Player/Grapple[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
