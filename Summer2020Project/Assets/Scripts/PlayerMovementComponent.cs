@@ -8,8 +8,14 @@ public class PlayerMovementComponent : MonoBehaviour
     [SerializeField]
     private float Speed = 10;
     private Vector2 InputValue = Vector2.zero;
+    private Rigidbody2D _rigidbody;
 
-    private void Update()
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
     {
         HandleMovement(InputValue);
     }
