@@ -9,10 +9,12 @@ public class PlayerMovementComponent : MonoBehaviour
     private float Speed = 10;
     private Vector2 InputValue = Vector2.zero;
     private Rigidbody2D _rigidbody;
+    private PlayerComponent player;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        player = GetComponent<PlayerComponent>();
     }
 
     private void FixedUpdate()
@@ -30,5 +32,9 @@ public class PlayerMovementComponent : MonoBehaviour
         Vector2 oldPosition = transform.position;
         Vector2 newPosition = new Vector2(oldPosition.x + (inputVector.x * Speed * Time.deltaTime), oldPosition.y);
         transform.position = newPosition;
+        if(inputVector.x != 0)
+        {
+            player.FacingDirection = inputVector.x;
+        }
     }
 }

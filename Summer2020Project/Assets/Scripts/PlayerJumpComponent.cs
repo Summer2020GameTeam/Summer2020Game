@@ -15,7 +15,7 @@ public class PlayerJumpComponent : MonoBehaviour
     [SerializeField]
     float BaseGravity = 2.3f;
     [SerializeField]
-    float JumpGravity = 1f;
+    float JumpGravity = 0f;
 
     private bool isGrounded;
     private Rigidbody2D _rigidbody;
@@ -25,7 +25,7 @@ public class PlayerJumpComponent : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isGrounded)
         {
