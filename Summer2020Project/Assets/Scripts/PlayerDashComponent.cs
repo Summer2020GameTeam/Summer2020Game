@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerDashComponent : MonoBehaviour
 {
     [SerializeField]
-    private float DashCooldown = 2;
-    private float currentDashCooldown;
+    private float DashCooldownTime = 2;
+    private bool dashAvailable = true;
     [SerializeField]
     private float DashSpeed = 20;
     [SerializeField]
@@ -28,13 +28,24 @@ public class PlayerDashComponent : MonoBehaviour
 
     private void HandleDash()
     {
-        _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
-        StartCoroutine(DashTimer());
+        if (dashAvailable)
+        {
+            dashAvailable = false;
+            _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
+            StartCoroutine(DashTimer());
+            StartCoroutine(RechargeDash());
+        }
     }
 
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
         _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+    }
+
+    private IEnumerator RechargeDash()
+    {
+        yield return new WaitForSeconds(DashCooldownTime);
+        dashAvailable = true;
     }
 }
