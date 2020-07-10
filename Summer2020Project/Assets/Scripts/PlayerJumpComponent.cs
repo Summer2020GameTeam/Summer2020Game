@@ -50,10 +50,6 @@ public class PlayerJumpComponent : MonoBehaviour
             _rigidbody.AddForce(new Vector2(0, JumpForce));
             isGrounded = false;
         }
-        else if(currentJumpTime < JumpTime)
-        {
-            _rigidbody.gravityScale = JumpGravity;
-        }
         else
         {
             _rigidbody.gravityScale = BaseGravity;

@@ -12,6 +12,7 @@ public class PlayerDashComponent : MonoBehaviour
     private float DashSpeed = 20;
     [SerializeField]
     private float DashTime = 1;
+    private Camera cam;
 
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
@@ -31,7 +32,10 @@ public class PlayerDashComponent : MonoBehaviour
         if (dashAvailable)
         {
             dashAvailable = false;
-            _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector2 direction =  mousePosition - new Vector2(this.transform.position.x, this.transform.position.y);
+            
+            _rigidbody.velocity = direction.normalized * DashSpeed;
             StartCoroutine(DashTimer());
             StartCoroutine(RechargeDash());
         }
@@ -40,7 +44,7 @@ public class PlayerDashComponent : MonoBehaviour
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
-        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        _rigidbody.velocity = new Vector2( _rigidbody.velocity.x * 0.2f, _rigidbody.velocity.y * 0.2f);
     }
 
     private IEnumerator RechargeDash()
