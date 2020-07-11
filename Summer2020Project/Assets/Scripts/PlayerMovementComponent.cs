@@ -35,6 +35,12 @@ public class PlayerMovementComponent : MonoBehaviour
         if(inputVector.x != 0)
         {
             player.FacingDirection = inputVector.x;
+
+            if(inputVector.x > 0 && _rigidbody.velocity.x < 0 ||
+               inputVector.x < 0 && _rigidbody.velocity.x > 0)
+            {
+                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+            }
         }
     }
 }
