@@ -12,15 +12,18 @@ public class PlayerDashComponent : MonoBehaviour
     private float DashSpeed = 20;
     [SerializeField]
     private float DashTime = 1;
-    private Camera cam;
+    [SerializeField]
+    private bool mouseDash = true;
 
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
+    private Camera cam;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerComponent>();
+        cam = Camera.main;
     }
     public void HandleInput(InputAction.CallbackContext context)
     {
@@ -29,13 +32,21 @@ public class PlayerDashComponent : MonoBehaviour
 
     private void HandleDash()
     {
-        if (dashAvailable)
+        if (dashAvailable && Mouse.current != null)
         {
             dashAvailable = false;
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector2 direction =  mousePosition - new Vector2(this.transform.position.x, this.transform.position.y);
-            
-            _rigidbody.velocity = direction.normalized * DashSpeed;
+
+            if(mouseDash)
+            {
+                Vector2 mousePosition = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector2 direction =  mousePosition - new Vector2(this.transform.position.x, this.transform.position.y);
+                _rigidbody.velocity = direction.normalized * DashSpeed;
+            }
+            else
+            {
+                _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
+            }
+
             StartCoroutine(DashTimer());
             StartCoroutine(RechargeDash());
         }
@@ -44,7 +55,11 @@ public class PlayerDashComponent : MonoBehaviour
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
-        _rigidbody.velocity = new Vector2( _rigidbody.velocity.x * 0.2f, _rigidbody.velocity.y * 0.2f);
+
+        if(mouseDash)
+            _rigidbody.velocity = new Vector2( _rigidbody.velocity.x * 0.2f, _rigidbody.velocity.y * 0.2f);
+        else
+            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
     }
 
     private IEnumerator RechargeDash()
