@@ -91,7 +91,11 @@ public class PlayerJumpComponent : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentJumpTime = 0f;
-        isGrounded = true;
+        if(transform.transform.InverseTransformDirection(_rigidbody.velocity).y <= 0)
+        {
+            Debug.Log(transform.transform.InverseTransformDirection(_rigidbody.velocity).y);
+            currentJumpTime = 0f;
+            isGrounded = true;
+        }
     }
 }

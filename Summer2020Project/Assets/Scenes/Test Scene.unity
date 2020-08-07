@@ -826,6 +826,27 @@ PrefabInstance:
       propertyPath: Speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2825368118425380322, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 2825368118425380322, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825368118425380322, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825368118425380322, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6087931244509109886, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
       propertyPath: mouseDash
@@ -892,6 +913,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -944628639613478452, guid: 8572aa2846a17b74cbd30607b2f64099,
         type: 3}
+    - target: {fileID: 6195488418614780118, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: jumpUpArrowAction.m_Id
+      value: caff7099-4392-43f5-ad68-f4ef863b3c0a
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502570604830209460, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502570604830209460, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502570604830209460, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542228942720868658, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542228942720868658, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542228942720868658, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6999324257820305018, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
       propertyPath: m_IsActive
