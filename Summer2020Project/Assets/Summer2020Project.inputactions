@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "JumpSpace",
                     "type": "Button",
                     "id": "1d259ed6-c87e-4945-996a-6fa02de37000",
                     "expectedControlType": "Button",
@@ -33,6 +33,22 @@
                     "name": "Grapple",
                     "type": "Button",
                     "id": "b2326c55-f1e2-49c9-bead-9a52d4b70219",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "JumpW",
+                    "type": "Button",
+                    "id": "12d22644-95c3-4541-9d79-75e5fa34377b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "JumpUpArrow",
+                    "type": "Button",
+                    "id": "a443bfbf-e854-4c67-a88f-9eed9e44e226",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -173,34 +189,12 @@
                 },
                 {
                     "name": "",
-                    "id": "d4eb2e00-0091-464b-8a44-ae2a209d95e5",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "45ed09c7-3668-44b3-ba4f-cbf7da104850",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fdcc1a51-25c3-4ebe-8553-9b5eedef63f1",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
+                    "action": "JumpSpace",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -223,6 +217,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Grapple",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4eb2e00-0091-464b-8a44-ae2a209d95e5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "JumpW",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdcc1a51-25c3-4ebe-8553-9b5eedef63f1",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpUpArrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
