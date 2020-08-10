@@ -18,11 +18,11 @@ public class PlayerInputComponent : MonoBehaviour
     void HandleInput()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Vertical"))
+        if (Input.GetButtonDown("Jump"))
         {
             JumpPressed.Invoke();
         }
-        if (Input.GetButtonUp("Vertical"))
+        if (Input.GetButtonUp("Jump"))
         {
             JumpReleased.Invoke();
         }
