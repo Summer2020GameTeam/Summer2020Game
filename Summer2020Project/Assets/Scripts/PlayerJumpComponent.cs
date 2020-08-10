@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,11 +41,11 @@ public class PlayerJumpComponent : MonoBehaviour
         jumpUpArrowAction = gameplayActionMap.FindAction("JumpUpArrow");
 
         jumpSpaceAction.performed += ctx => HandleJump(ctx.action.name);
-        jumpSpaceAction.canceled += ctx => HandleJump(ctx.action.name);
+        jumpSpaceAction.canceled += ctx => HandleCancel(ctx.action.name);
         jumpWAction.performed += ctx => HandleJump(ctx.action.name);
-        jumpWAction.canceled += ctx => HandleJump(ctx.action.name);
+        jumpWAction.canceled += ctx => HandleCancel(ctx.action.name);
         jumpUpArrowAction.performed += ctx => HandleJump(ctx.action.name);
-        jumpUpArrowAction.canceled += ctx => HandleJump(ctx.action.name);
+        jumpUpArrowAction.canceled += ctx => HandleCancel(ctx.action.name);
     }
 
     private void OnEnable()
@@ -82,7 +83,11 @@ public class PlayerJumpComponent : MonoBehaviour
             isGrounded = false;
             lastJumpButtonPressed = buttonName;
         }
-        else if (lastJumpButtonPressed == buttonName)
+    }
+
+    private void HandleCancel(string buttonName)
+    {
+        if (lastJumpButtonPressed == buttonName)
         {
             Debug.Log("Cancelled");
             _rigidbody.gravityScale = BaseGravity;
