@@ -7,7 +7,7 @@ public class PlayerMovementComponent : MonoBehaviour
 {
     [SerializeField]
     private float Speed = 10;
-    private Vector2 InputValue = Vector2.zero;
+    public Vector2 InputValue = Vector2.zero;
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
 
@@ -20,11 +20,6 @@ public class PlayerMovementComponent : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement(InputValue);
-    }
-    public void HandleInput(InputAction.CallbackContext context)
-    {
-        context.action.performed += ctx => InputValue = ctx.ReadValue<Vector2>();
-        context.action.canceled += ctx => InputValue = Vector2.zero;
     }
 
     private void HandleMovement(Vector2 inputVector)

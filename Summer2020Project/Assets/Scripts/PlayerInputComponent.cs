@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInputComponent : MonoBehaviour
 {
     public float HorizontalInput { get; private set; }
-    public float VerticalInput { get; private set; }
+    public UnityEvent JumpPressed = new UnityEvent();
+    public UnityEvent JumpReleased = new UnityEvent();
     public float GrappleInput { get; private set; }
     public float DashInput { get; private set; }
-    void FixedUpdate()
+    void Update()
     {
         HandleInput();
     }
@@ -16,7 +18,14 @@ public class PlayerInputComponent : MonoBehaviour
     void HandleInput()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
-        VerticalInput = Input.GetAxis("Vertical");
+        if (Input.GetButtonDown("Vertical"))
+        {
+            JumpPressed.Invoke();
+        }
+        if (Input.GetButtonUp("Vertical"))
+        {
+            JumpReleased.Invoke();
+        }
         GrappleInput = Input.GetAxis("Fire1");
         DashInput = Input.GetAxis("Fire3"); 
     }
