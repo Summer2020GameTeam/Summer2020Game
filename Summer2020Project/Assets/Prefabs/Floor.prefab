@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313677810168301544}
   - component: {fileID: 8595235812152997751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313677811934022972}
   - component: {fileID: 7313677811934022975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloorSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
