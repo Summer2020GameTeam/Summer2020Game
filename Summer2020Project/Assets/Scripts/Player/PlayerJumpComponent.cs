@@ -18,15 +18,6 @@ public class PlayerJumpComponent : MonoBehaviour
     [SerializeField]
     float JumpGravity = 0f;
 
-    [SerializeField]
-    InputAction jumpWAction;
-    [SerializeField]
-    InputAction jumpSpaceAction;
-    [SerializeField]
-    InputAction jumpUpArrowAction;
-    [SerializeField]
-    private InputActionAsset playerControls;
-
     private string lastJumpButtonPressed;
     private bool isGrounded;
     private Rigidbody2D _rigidbody;

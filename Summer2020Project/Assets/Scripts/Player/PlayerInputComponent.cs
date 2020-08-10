@@ -8,8 +8,8 @@ public class PlayerInputComponent : MonoBehaviour
     public float HorizontalInput { get; private set; }
     public UnityEvent JumpPressed = new UnityEvent();
     public UnityEvent JumpReleased = new UnityEvent();
-    public float GrappleInput { get; private set; }
-    public float DashInput { get; private set; }
+    public UnityEvent GrapplePressed = new UnityEvent();
+    public UnityEvent DashPressed = new UnityEvent();
     void Update()
     {
         HandleInput();
@@ -26,7 +26,13 @@ public class PlayerInputComponent : MonoBehaviour
         {
             JumpReleased.Invoke();
         }
-        GrappleInput = Input.GetAxis("Fire1");
-        DashInput = Input.GetAxis("Fire3"); 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GrapplePressed.Invoke();
+        }
+        if (Input.GetButtonDown("Fire3"))
+        {
+            DashPressed.Invoke();
+        }
     }
 }

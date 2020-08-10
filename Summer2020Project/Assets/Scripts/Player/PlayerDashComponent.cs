@@ -25,12 +25,8 @@ public class PlayerDashComponent : MonoBehaviour
         player = GetComponent<PlayerComponent>();
         cam = Camera.main;
     }
-    public void HandleInput(InputAction.CallbackContext context)
-    {
-        context.action.performed += ctx => HandleDash();
-    }
 
-    private void HandleDash()
+    public void HandleDash()
     {
         if (dashAvailable && Mouse.current != null)
         {

@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 6195488418614780118}
   - component: {fileID: 6087931244509109886}
   - component: {fileID: 3211435959898869253}
-  - component: {fileID: 2557903598689794148}
   - component: {fileID: 7182280133550685254}
   - component: {fileID: 7939437428928998873}
   m_Layer: 0
@@ -145,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
+  InputValue: {x: 0, y: 0}
 --- !u!114 &6195488418614780118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,31 +162,6 @@ MonoBehaviour:
   currentJumpTime: 0
   BaseGravity: 2.3
   JumpGravity: 0.2
-  jumpWAction:
-    m_Name: Jump W
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3ed97cb4-d6b4-4491-9387-70e944fdab5d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  jumpSpaceAction:
-    m_Name: Jump Space
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: f9e9a658-3d56-4c20-9fe2-16ce3d65c72d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  jumpUpArrowAction:
-    m_Name: Jump Up Arrow
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 8e3dc799-95d4-4c6e-8384-f77165348f21
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-  playerControls: {fileID: 0}
 --- !u!114 &6087931244509109886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +177,7 @@ MonoBehaviour:
   DashCooldownTime: 1
   DashSpeed: 50
   DashTime: 0.1
-  mouseDash: 1
+  mouseDash: 0
 --- !u!114 &3211435959898869253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,10 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91ec9ebef2e9a948abcbdb66f692a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2557903598689794148
   GrappleProjectile: {fileID: 6831484520966731342, guid: b7d07f506e8546f4898fb49b00bab0fe,
     type: 3}
-  GrappleProjectileSpeed: 20
+  GrappleProjectileSpeed: 25
   GrappleLifespan: 0.4
   GrappleForce: 25
 --- !u!114 &7182280133550685254
@@ -233,125 +207,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa21a2101cbbe647a8b1c7a088b3f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8572aa2846a17b74cbd30607b2f64099,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
+  JumpPressed:
     m_PersistentCalls:
       m_Calls: []
-  m_DeviceRegainedEvent:
+  JumpReleased:
     m_PersistentCalls:
       m_Calls: []
-  m_ControlsChangedEvent:
+  GrapplePressed:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1776099563091026405}
-        m_MethodName: HandleInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d7220cf3-745e-44b9-8982-551d5ee74c1c
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
+  DashPressed:
+    m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 115b4f96-8688-4962-87fa-a124677d1bab
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: de087a45-8d34-4971-91ee-bc3e0f45d985
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fa1ec846-7987-4bf5-a384-8edd22387f32
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3ade544b-892d-4fa6-917b-6f060290c7b0
-    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3292e141-07bd-4896-99aa-d3573c6d103a
-    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1dfadc8c-a760-4af3-a432-d66ee50c1197
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a86864ea-50d5-4c44-a332-25a3883a6099
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 89028631-b7f4-47da-8fa8-d24c922015a3
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 260e2b7f-146a-4495-bf3d-6345f1b048cf
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a7c4061d-6caf-4b09-9f5d-bf5b5c4c3da8
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6195488418614780118}
-        m_MethodName: HandleInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1d259ed6-c87e-4945-996a-6fa02de37000
-    m_ActionName: Player/Jump[/Keyboard/w,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6087931244509109886}
-        m_MethodName: HandleInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1e736614-fa0e-43a2-8179-78e7f31d4f47
-    m_ActionName: Player/Dash[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3211435959898869253}
-        m_MethodName: HandleInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b2326c55-f1e2-49c9-bead-9a52d4b70219
-    m_ActionName: Player/Grapple[/Keyboard/e]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!120 &7939437428928998873
 LineRenderer:
   m_ObjectHideFlags: 0

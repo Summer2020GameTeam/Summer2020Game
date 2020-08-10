@@ -40,13 +40,7 @@ public class PlayerGrappleComponent : MonoBehaviour
         }
     }
 
-    public void HandleInput(InputAction.CallbackContext context)
-    {
-        Debug.Log("Test");
-        context.action.performed += ctx => LaunchGrapple();
-    }
-
-    private void LaunchGrapple()
+    public void LaunchGrapple()
     {
         if (launchedGrapple == null)
         {
