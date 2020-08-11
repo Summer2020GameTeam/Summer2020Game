@@ -12,37 +12,26 @@ public class PlayerDashComponent : MonoBehaviour
     private float DashSpeed = 20;
     [SerializeField]
     private float DashTime = 1;
-    [SerializeField]
-    private bool mouseDash = true;
 
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
-    private Camera cam;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerComponent>();
-        cam = Camera.main;
     }
 
+    private void Update()
+    {
+        
+    }
     public void HandleDash()
     {
-        if (dashAvailable && Mouse.current != null)
+        if (dashAvailable && enabled)
         {
             dashAvailable = false;
-
-            if(mouseDash)
-            {
-                Vector2 mousePosition = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                Vector2 direction =  mousePosition - new Vector2(this.transform.position.x, this.transform.position.y);
-                _rigidbody.velocity = direction.normalized * DashSpeed;
-            }
-            else
-            {
-                _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
-            }
-
+            _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
             StartCoroutine(DashTimer());
             StartCoroutine(RechargeDash());
         }
@@ -51,11 +40,7 @@ public class PlayerDashComponent : MonoBehaviour
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
-
-        if(mouseDash)
-            _rigidbody.velocity = new Vector2( _rigidbody.velocity.x * 0.2f, _rigidbody.velocity.y * 0.2f);
-        else
-            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
     }
 
     private IEnumerator RechargeDash()

@@ -41,7 +41,7 @@ public class PlayerJumpComponent : MonoBehaviour
 
     public void HandleJump()
     {
-        if (isGrounded)
+        if (isGrounded && enabled)
         {
             _rigidbody.gravityScale = JumpGravity;
             _rigidbody.AddForce(new Vector2(0, JumpForce));
