@@ -31,7 +31,7 @@ public class PlayerDashComponent : MonoBehaviour
         if (dashAvailable && enabled)
         {
             dashAvailable = false;
-            _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
+            _rigidbody.AddForce(new Vector2(DashSpeed * player.FacingDirection, 0), ForceMode2D.Impulse);
             StartCoroutine(DashTimer());
             StartCoroutine(RechargeDash());
         }
@@ -40,7 +40,7 @@ public class PlayerDashComponent : MonoBehaviour
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
-        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        _rigidbody.AddForce(new Vector2(-DashSpeed * player.FacingDirection, 0), ForceMode2D.Impulse);
     }
 
     private IEnumerator RechargeDash()
