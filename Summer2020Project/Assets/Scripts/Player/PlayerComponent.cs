@@ -9,6 +9,8 @@ public class PlayerComponent : MonoBehaviour
 
     private PlayerInputComponent input;
 
+    private PlayerState state = PlayerState.Surface;
+
     private PlayerMovementComponent movement;
     private PlayerJumpComponent jump;
     private PlayerGrappleComponent grapple;
@@ -29,7 +31,16 @@ public class PlayerComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement.InputValue.x = input.HorizontalInput;
+        switch (state)
+        {
+            case PlayerState.Surface:
+                movement.InputValue.x = input.HorizontalInput;
+                break;
+            case PlayerState.Swimming:
+                break;
+            default:
+                break;
+        }
     }
 
 }
