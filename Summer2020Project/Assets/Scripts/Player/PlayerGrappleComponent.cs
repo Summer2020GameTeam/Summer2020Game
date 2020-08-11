@@ -42,7 +42,7 @@ public class PlayerGrappleComponent : MonoBehaviour
 
     public void LaunchGrapple()
     {
-        if (launchedGrapple == null)
+        if (launchedGrapple == null && enabled)
         {
             launchedGrapple = Instantiate(GrappleProjectile, transform.position, Quaternion.identity);
             GrappleProjectileBehaviourComponent grappleBehaviour = launchedGrapple.GetComponent<GrappleProjectileBehaviourComponent>();
