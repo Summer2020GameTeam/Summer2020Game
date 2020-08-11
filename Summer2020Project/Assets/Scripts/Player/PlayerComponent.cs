@@ -29,6 +29,7 @@ public class PlayerComponent : MonoBehaviour
         input.JumpReleased.AddListener(jump.HandleCancel);
         input.GrapplePressed.AddListener(grapple.LaunchGrapple);
         input.DashPressed.AddListener(dash.HandleDash);
+        input.DivePressed.AddListener(dive.HandleDive);
     }
 
     private void FixedUpdate()
@@ -46,6 +47,26 @@ public class PlayerComponent : MonoBehaviour
                 jump.enabled = false;
                 movement.enabled = false;
                 dive.InputValue = new Vector2(input.HorizontalInput, input.VerticalInput);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SetPlayerState(PlayerState newState)
+    {
+        state = newState;
+        switch (newState)
+        {
+            case PlayerState.Surface:
+                movement.enabled = true;
+                jump.enabled = true;
+                dive.enabled = false;
+                break;
+            case PlayerState.Swimming:
+                dive.enabled = true;
+                jump.enabled = false;
+                movement.enabled = false;
                 break;
             default:
                 break;

@@ -10,6 +10,8 @@ public class PlayerDiveComponent : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
 
+    private bool isInWater;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -38,6 +40,31 @@ public class PlayerDiveComponent : MonoBehaviour
             {
                 _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
             }
+        }
+    }
+
+    public void HandleDive()
+    {
+        if (isInWater)
+        {
+            player.SetPlayerState(PlayerState.Swimming);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 4)
+        {
+            isInWater = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 4)
+        {
+            isInWater = false;
+            player.SetPlayerState(PlayerState.Surface);
         }
     }
 }

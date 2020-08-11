@@ -11,6 +11,7 @@ public class PlayerInputComponent : MonoBehaviour
     public UnityEvent JumpReleased = new UnityEvent();
     public UnityEvent GrapplePressed = new UnityEvent();
     public UnityEvent DashPressed = new UnityEvent();
+    public UnityEvent DivePressed = new UnityEvent();
     void Update()
     {
         HandleInput();
@@ -35,6 +36,10 @@ public class PlayerInputComponent : MonoBehaviour
         if (Input.GetButtonDown("Fire3"))
         {
             DashPressed.Invoke();
+        }
+        if (Input.GetButtonDown("Dive"))
+        {
+            DivePressed.Invoke();
         }
     }
 }
