@@ -27,6 +27,11 @@ public class PlayerJumpComponent : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        _rigidbody.gravityScale = BaseGravity;
+    }
+
     private void FixedUpdate()
     {
         if (!isGrounded)
@@ -51,7 +56,10 @@ public class PlayerJumpComponent : MonoBehaviour
 
     public void HandleCancel()
     {
+        if (enabled)
+        {
             _rigidbody.gravityScale = BaseGravity;
+        }
 
     }
 

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6195488418614780118}
   - component: {fileID: 6087931244509109886}
   - component: {fileID: 3211435959898869253}
+  - component: {fileID: 3218924043605655533}
   - component: {fileID: 7182280133550685254}
   - component: {fileID: 7939437428928998873}
   m_Layer: 0
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FacingDirection: 0
+  state: 0
 --- !u!114 &1776099563091026405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +179,6 @@ MonoBehaviour:
   DashCooldownTime: 1
   DashSpeed: 50
   DashTime: 0.1
-  mouseDash: 0
 --- !u!114 &3211435959898869253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +196,20 @@ MonoBehaviour:
   GrappleProjectileSpeed: 25
   GrappleLifespan: 0.4
   GrappleForce: 25
+--- !u!114 &3218924043605655533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999324258872592365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fdd8b74985ff8479b4bddfa4d88a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  input: {x: 0, y: 0}
 --- !u!114 &7182280133550685254
 MonoBehaviour:
   m_ObjectHideFlags: 0

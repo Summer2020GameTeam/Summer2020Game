@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class PlayerInputComponent : MonoBehaviour
 {
     public float HorizontalInput { get; private set; }
+    public float VerticalInput { get; private set; }
     public UnityEvent JumpPressed = new UnityEvent();
     public UnityEvent JumpReleased = new UnityEvent();
     public UnityEvent GrapplePressed = new UnityEvent();
     public UnityEvent DashPressed = new UnityEvent();
+    public UnityEvent DivePressed = new UnityEvent();
     void Update()
     {
         HandleInput();
@@ -18,6 +20,7 @@ public class PlayerInputComponent : MonoBehaviour
     void HandleInput()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
+        VerticalInput = Input.GetAxis("Vertical");
         if (Input.GetButtonDown("Jump"))
         {
             JumpPressed.Invoke();
@@ -33,6 +36,10 @@ public class PlayerInputComponent : MonoBehaviour
         if (Input.GetButtonDown("Fire3"))
         {
             DashPressed.Invoke();
+        }
+        if (Input.GetButtonDown("Dive"))
+        {
+            DivePressed.Invoke();
         }
     }
 }
