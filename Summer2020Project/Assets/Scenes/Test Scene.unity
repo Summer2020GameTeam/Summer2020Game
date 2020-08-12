@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &23994109 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6502570604830209460, guid: 49d418328c49f054095c412281a967a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6999324259480187410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &31689047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1145,6 +1151,11 @@ PrefabInstance:
       propertyPath: jumpUpArrowAction.m_Id
       value: caff7099-4392-43f5-ad68-f4ef863b3c0a
       objectReference: {fileID: 0}
+    - target: {fileID: 6195488418614780118, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: playerGroundCheckTransform
+      value: 
+      objectReference: {fileID: 23994109}
     - target: {fileID: 6502570604830209460, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
       propertyPath: m_LocalScale.x

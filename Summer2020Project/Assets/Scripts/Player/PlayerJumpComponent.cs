@@ -17,9 +17,12 @@ public class PlayerJumpComponent : MonoBehaviour
     float BaseGravity = 2.3f;
     [SerializeField]
     float JumpGravity = 0f;
+    [SerializeField]
+    private Transform playerGroundCheckTransform;
+    [SerializeField]
+    private Vector2 playerGroundCheckSize;
 
     private string lastJumpButtonPressed;
-    private bool isGrounded;
     private Rigidbody2D _rigidbody;
 
     private void Awake()
@@ -34,7 +37,7 @@ public class PlayerJumpComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isGrounded)
+        if (!isGrounded())
         {
             currentJumpTime += Time.deltaTime;
             if(currentJumpTime >= JumpTime)
@@ -46,11 +49,11 @@ public class PlayerJumpComponent : MonoBehaviour
 
     public void HandleJump()
     {
-        if (isGrounded && enabled)
+        if (isGrounded() && enabled)
         {
+            currentJumpTime = 0;
             _rigidbody.gravityScale = JumpGravity;
             _rigidbody.AddForce(new Vector2(0, JumpForce));
-            isGrounded = false;
         }
     }
 
@@ -63,12 +66,26 @@ public class PlayerJumpComponent : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool isGrounded()
     {
-        if(transform.transform.InverseTransformDirection(_rigidbody.velocity).y <= 0)
+        Collider2D[] tempColliders = Physics2D.OverlapBoxAll(playerGroundCheckTransform.position, playerGroundCheckSize, 0);
+        if (tempColliders != null)
         {
-            currentJumpTime = 0f;
-            isGrounded = true;
+            for(int i = 0; i < tempColliders.Length; i++)
+            {
+                if (tempColliders[i].gameObject.layer == 8 || tempColliders[i].gameObject.layer == 4)
+                {
+                    Debug.Log("Ground check" + tempColliders[i].gameObject.layer);
+                    return true;
+                }
+            }
         }
+        
+        return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(playerGroundCheckTransform.position, playerGroundCheckSize);
     }
 }

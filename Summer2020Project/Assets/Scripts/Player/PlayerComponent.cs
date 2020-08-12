@@ -10,6 +10,9 @@ public class PlayerComponent : MonoBehaviour
     private PlayerInputComponent input;
     [SerializeField]
     private PlayerState state = PlayerState.Surface;
+    [SerializeField]
+    [Range(0, 1)]
+    private float timeScale = 1;
 
     private PlayerMovementComponent movement;
     private PlayerJumpComponent jump;
@@ -34,6 +37,8 @@ public class PlayerComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Time.timeScale = timeScale;
+
         switch (state)
         {
             case PlayerState.Surface:

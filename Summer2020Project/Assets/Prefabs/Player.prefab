@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FacingDirection: 0
   state: 0
+  timeScale: 1
 --- !u!114 &1776099563091026405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +165,8 @@ MonoBehaviour:
   currentJumpTime: 0
   BaseGravity: 2.3
   JumpGravity: 0.2
+  playerGroundCheckTransform: {fileID: 6502570604830209460}
+  playerGroundCheckSize: {x: 0.98, y: 0.15}
 --- !u!114 &6087931244509109886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  input: {x: 0, y: 0}
+  InputValue: {x: 0, y: 0}
 --- !u!114 &7182280133550685254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +235,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DashPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  DivePressed:
     m_PersistentCalls:
       m_Calls: []
 --- !u!120 &7939437428928998873
