@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   InputValue: {x: 0, y: 0}
+  Velocity: 0
 --- !u!114 &6195488418614780118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DashCooldownTime: 1
-  DashSpeed: 50
-  DashTime: 0.1
+  DashSpeed: 40
+  DashTime: 0.2
+  MinimalDashSpeed: 5
+  BreakTime: 0.4
+  DashBreakMultiplier: 0.8
 --- !u!114 &3211435959898869253
 MonoBehaviour:
   m_ObjectHideFlags: 0

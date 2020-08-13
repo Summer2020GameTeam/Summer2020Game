@@ -1056,6 +1056,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1776099563091026405, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776099563091026405, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
       propertyPath: Speed
       value: 10
       objectReference: {fileID: 0}
@@ -1079,11 +1084,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6087931244509109886, guid: 49d418328c49f054095c412281a967a6,
-        type: 3}
-      propertyPath: mouseDash
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6195488418614780118, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
@@ -1156,6 +1156,16 @@ PrefabInstance:
       propertyPath: playerGroundCheckTransform
       value: 
       objectReference: {fileID: 23994109}
+    - target: {fileID: 6335538360832556997, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: timeScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335538360832556997, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6502570604830209460, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
       propertyPath: m_LocalScale.x
