@@ -22,15 +22,15 @@ public class PlayerPlatforms : MonoBehaviour
 
         transform.position = player.transform.position;
 
-        if (Input.GetKeyUp(KeyCode.DownArrow) && inPlatform == false)
+        if (Input.GetKeyUp("s") && inPlatform == false)
         {
             Physics2D.IgnoreLayerCollision(8, 9, false);
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && inPlatform == true)
+        else if (Input.GetKeyUp("s") && inPlatform == true)
         {
             delayedCollision = true;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown("s"))
         {
             Physics2D.IgnoreLayerCollision(8, 9, true);
         }
