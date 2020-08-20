@@ -11,6 +11,7 @@ public class PlayerMovementComponent : MonoBehaviour
     public Vector2 InputValue = Vector2.zero;
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
+    private PlayerDashComponent playerDash;
 
     public float Velocity;
 
@@ -18,42 +19,31 @@ public class PlayerMovementComponent : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GetComponent<PlayerComponent>();
+        playerDash = _rigidbody.GetComponent<PlayerDashComponent>();
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         HandleMovement(InputValue);
     }
 
-    //private float getVelocity()
-    //{
-
-    //}
-
     private void HandleMovement(Vector2 inputVector)
     {
-        //Vector2 oldposition = transform.position;
-        //Vector2 newposition = new Vector2(oldposition.x + (inputVector.x * Speed * Time.deltaTime), oldposition.y);
-        //transform.position = newposition;
-
-        if (Math.Abs(_rigidbody.velocity.x) < Speed)
-        {
-            _rigidbody.velocity = new Vector2(Speed * inputVector.x, _rigidbody.velocity.y);
-        }
-        else
-        {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x * Math.Abs(inputVector.x), _rigidbody.velocity.y);
-        }
-
-        if (inputVector.x != 0)
-        {
-            player.FacingDirection = inputVector.x;
-
-            if(inputVector.x > 0 && _rigidbody.velocity.x < 0 ||
-               inputVector.x < 0 && _rigidbody.velocity.x > 0)
+            if (Math.Abs(_rigidbody.velocity.x) < Speed)
             {
-                _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                _rigidbody.velocity = new Vector2(Speed * inputVector.x, _rigidbody.velocity.y);
             }
-        }
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x * Math.Abs(inputVector.x), _rigidbody.velocity.y);
+
+            if (inputVector.x != 0)
+            {
+                player.FacingDirection = inputVector.normalized.x;
+
+                if (inputVector.x > 0 && _rigidbody.velocity.x < 0 ||
+                   inputVector.x < 0 && _rigidbody.velocity.x > 0)
+                {
+                    _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+                }
+            }
     }
 }

@@ -64,7 +64,7 @@ public class PlayerDiveComponent : MonoBehaviour
         if (collision.gameObject.layer == 4)
         {
             isInWater = false;
-            player.SetPlayerState(PlayerState.Surface);
+            player.SetPlayerState(PlayerState.Default);
         }
     }
 }

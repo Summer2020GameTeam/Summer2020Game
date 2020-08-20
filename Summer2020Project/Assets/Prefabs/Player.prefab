@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DashCooldownTime: 1
-  DashSpeed: 40
-  DashTime: 0.2
+  DashSpeed: 60
+  DashDistance: 10
   MinimalDashSpeed: 5
   BreakTime: 0.4
   DashBreakMultiplier: 0.8

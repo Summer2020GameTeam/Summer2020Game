@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum PlayerState
 {
-    Surface,
-    Swimming
+    Default,
+    Swimming,
+    Dashing
 }

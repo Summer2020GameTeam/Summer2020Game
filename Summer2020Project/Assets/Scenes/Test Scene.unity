@@ -1085,6 +1085,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6087931244509109886, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087931244509109886, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: DashSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087931244509109886, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: DashDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6195488418614780118, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
       propertyPath: jumpWAction.m_Id
@@ -1156,6 +1171,11 @@ PrefabInstance:
       propertyPath: playerGroundCheckTransform
       value: 
       objectReference: {fileID: 23994109}
+    - target: {fileID: 6195488418614780118, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: BaseGravity
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6335538360832556997, guid: 49d418328c49f054095c412281a967a6,
         type: 3}
       propertyPath: timeScale
@@ -1265,6 +1285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999324258872591379, guid: 49d418328c49f054095c412281a967a6,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6999324258872592365, guid: 49d418328c49f054095c412281a967a6,
         type: 3}

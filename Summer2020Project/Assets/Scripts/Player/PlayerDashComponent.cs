@@ -10,9 +10,10 @@ public class PlayerDashComponent : MonoBehaviour
     private float DashCooldownTime = 2;
     private bool dashAvailable = true;
     [SerializeField]
-    private float DashSpeed = 40;
+    private float DashSpeed = 60;
     [SerializeField]
-    private float DashTime = 0.2f;
+    private float DashDistance = 10;
+    private float DashTime = 0;
     [SerializeField]
     private float MinimalDashSpeed = 5;
     [SerializeField]
@@ -20,6 +21,8 @@ public class PlayerDashComponent : MonoBehaviour
     [SerializeField]
     private float DashBreakMultiplier = 0.80f;
 
+    private float savedVelocity;
+    private float savedGravityScale;
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
 
@@ -31,39 +34,56 @@ public class PlayerDashComponent : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_rigidbody.velocity);
+        
     }
     public void HandleDash()
     {
         if (dashAvailable && enabled)
         {
-            Debug.Log(_rigidbody.velocity);
+            player.SetPlayerState(PlayerState.Dashing);
             dashAvailable = false;
-            if(Math.Abs(_rigidbody.velocity.x) > 5)
+            if (Math.Abs(DashSpeed * player.FacingDirection + _rigidbody.velocity.x) < DashSpeed)
             {
-                _rigidbody.AddForce(new Vector2(DashSpeed * player.FacingDirection, 0), ForceMode2D.Impulse);
-                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y);
+                DashTime = DashDistance / DashSpeed;
             }
             else
             {
-                _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, _rigidbody.velocity.y);
+                DashTime = DashDistance / (DashSpeed + Math.Abs(_rigidbody.velocity.x));
             }
-           
-            StartCoroutine(DashTimer());
-            StartCoroutine(RechargeDash());
+            StartCoroutine(DoDash());
         }
+    }
+
+    private IEnumerator DoDash()
+    {
+        savedGravityScale = _rigidbody.gravityScale;
+        savedVelocity = _rigidbody.velocity.x;
+        _rigidbody.gravityScale = 0;
+        _rigidbody.velocity = new Vector2(0, 0f);
+        yield return new WaitForSeconds(0.1f);
+        if(Math.Abs(DashSpeed * player.FacingDirection + _rigidbody.velocity.x) < DashSpeed)
+        {
+            _rigidbody.velocity = new Vector2(DashSpeed * player.FacingDirection, 0);
+        }
+        else
+        {
+            _rigidbody.velocity = new Vector2(Math.Abs(DashSpeed + Math.Abs(_rigidbody.velocity.x)) * player.FacingDirection, 0);
+        }
+
+        StartCoroutine(DashTimer());
+        StartCoroutine(RechargeDash());
     }
 
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
-        if (Math.Abs(_rigidbody.velocity.x) >= DashSpeed/2)
-        {
-            _rigidbody.AddForce(new Vector2((-DashSpeed*0.8f) * player.FacingDirection, 0), ForceMode2D.Impulse);
-        }
-        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x * DashBreakMultiplier, _rigidbody.velocity.y);
-        yield return new WaitForSeconds(BreakTime);
-        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x * (float)Math.Pow(System.Convert.ToDouble(DashBreakMultiplier), -1d), _rigidbody.velocity.y);
+        _rigidbody.velocity = new Vector2(0, 1f);
+        yield return new WaitForSeconds(0.1f);
+        _rigidbody.gravityScale = savedGravityScale;
+
+        //Keep player momentum after dash.
+        _rigidbody.velocity = new Vector2(savedVelocity * 1.05f, 0);
+        player.SetPlayerState(PlayerState.Default);
     }
 
     private IEnumerator RechargeDash()

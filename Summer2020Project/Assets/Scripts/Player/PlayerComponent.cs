@@ -9,7 +9,7 @@ public class PlayerComponent : MonoBehaviour
 
     private PlayerInputComponent input;
     [SerializeField]
-    private PlayerState state = PlayerState.Surface;
+    private PlayerState state = PlayerState.Default;
     [SerializeField]
     [Range(0, 1)]
     private float timeScale = 1;
@@ -35,16 +35,17 @@ public class PlayerComponent : MonoBehaviour
         input.DivePressed.AddListener(dive.HandleDive);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Time.timeScale = timeScale;
 
         switch (state)
         {
-            case PlayerState.Surface:
+            case PlayerState.Default:
                 movement.enabled = true;
                 jump.enabled = true;
                 dive.enabled = false;
+                grapple.enabled = true;
                 movement.InputValue.x = input.HorizontalInput;
                 break;
             case PlayerState.Swimming:
@@ -53,8 +54,14 @@ public class PlayerComponent : MonoBehaviour
                 movement.enabled = false;
                 dive.InputValue = new Vector2(input.HorizontalInput, input.VerticalInput);
                 break;
+            case PlayerState.Dashing:
+                jump.enabled = false;
+                movement.enabled = false;
+                grapple.enabled = false;
+                break;
             default:
                 break;
+
         }
     }
 
@@ -63,7 +70,7 @@ public class PlayerComponent : MonoBehaviour
         state = newState;
         switch (newState)
         {
-            case PlayerState.Surface:
+            case PlayerState.Default:
                 movement.enabled = true;
                 jump.enabled = true;
                 dive.enabled = false;
