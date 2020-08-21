@@ -19,6 +19,7 @@ public class PlayerComponent : MonoBehaviour
     private PlayerGrappleComponent grapple;
     private PlayerDashComponent dash;
     private PlayerDiveComponent dive;
+    private PlayerSlideComponent slide;
 
     private void Awake()
     {
@@ -28,11 +29,13 @@ public class PlayerComponent : MonoBehaviour
         grapple = GetComponent<PlayerGrappleComponent>();
         dash = GetComponent<PlayerDashComponent>();
         dive = GetComponent<PlayerDiveComponent>();
+        slide = GetComponent<PlayerSlideComponent>();
         input.JumpPressed.AddListener(jump.HandleJump);
         input.JumpReleased.AddListener(jump.HandleCancel);
         input.GrapplePressed.AddListener(grapple.LaunchGrapple);
         input.DashPressed.AddListener(dash.HandleDash);
         input.DivePressed.AddListener(dive.HandleDive);
+        input.SlidePressed.AddListener(slide.HandleSlide);
     }
 
     private void Update()
@@ -58,6 +61,11 @@ public class PlayerComponent : MonoBehaviour
                 jump.enabled = false;
                 movement.enabled = false;
                 grapple.enabled = false;
+                break;
+            case PlayerState.Sliding:
+                dash.enabled = false;
+                movement.enabled = true;
+                movement.InputValue.x = input.HorizontalInput;
                 break;
             default:
                 break;

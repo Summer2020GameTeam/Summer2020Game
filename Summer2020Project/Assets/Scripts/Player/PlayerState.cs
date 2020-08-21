@@ -6,5 +6,6 @@ public enum PlayerState
 {
     Default,
     Swimming,
-    Dashing
+    Dashing,
+    Sliding
 }

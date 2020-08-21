@@ -12,6 +12,15 @@ public class PlayerInputComponent : MonoBehaviour
     public UnityEvent GrapplePressed = new UnityEvent();
     public UnityEvent DashPressed = new UnityEvent();
     public UnityEvent DivePressed = new UnityEvent();
+    public UnityEvent SlidePressed = new UnityEvent();
+
+    private PlayerJumpComponent jumpComponent;
+
+    private void Awake()
+    {
+        jumpComponent = GetComponent<PlayerJumpComponent>();
+    }
+
     void Update()
     {
         HandleInput();
@@ -35,7 +44,14 @@ public class PlayerInputComponent : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire3"))
         {
-            DashPressed.Invoke();
+            if (jumpComponent.isGrounded())
+            {
+                SlidePressed.Invoke();
+            }
+            else
+            {
+                DashPressed.Invoke();
+            }
         }
         if (Input.GetButtonDown("Dive"))
         {

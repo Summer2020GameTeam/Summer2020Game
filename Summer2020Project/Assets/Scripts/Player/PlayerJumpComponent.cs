@@ -66,7 +66,8 @@ public class PlayerJumpComponent : MonoBehaviour
 
     }
 
-    private bool isGrounded()
+    //Todo: Used in two different components. Refactor by making a seperate (static?) script for this. (Used by Jump and Input components).
+    public bool isGrounded()
     {
         Collider2D[] tempColliders = Physics2D.OverlapBoxAll(playerGroundCheckTransform.position, playerGroundCheckSize, 0);
         if (tempColliders != null)
@@ -82,6 +83,24 @@ public class PlayerJumpComponent : MonoBehaviour
         }
         
         return false;
+    }
+
+    //Todo: Un-Spaghet
+    public Collider2D getFloorCollider()
+    {
+        Collider2D[] tempColliders = Physics2D.OverlapBoxAll(playerGroundCheckTransform.position, playerGroundCheckSize, 0);
+        if (tempColliders != null)
+        {
+            for (int i = 0; i < tempColliders.Length; i++)
+            {
+                if (tempColliders[i].gameObject.layer == 8 || tempColliders[i].gameObject.layer == 4)
+                {
+                    return tempColliders[i];
+                }
+            }
+        }
+
+        return null;
     }
 
     private void OnDrawGizmos()
