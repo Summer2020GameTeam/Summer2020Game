@@ -7,5 +7,6 @@ public enum PlayerState
     Default,
     Swimming,
     Dashing,
-    Sliding
+    Sliding,
+    Jumping
 }

@@ -24,10 +24,12 @@ public class PlayerJumpComponent : MonoBehaviour
 
     private string lastJumpButtonPressed;
     private Rigidbody2D _rigidbody;
+    private PlayerComponent playerComponent;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        playerComponent = GetComponent<PlayerComponent>();
     }
 
     private void OnEnable()
@@ -52,7 +54,9 @@ public class PlayerJumpComponent : MonoBehaviour
         if (isGrounded() && enabled)
         {
             currentJumpTime = 0;
+            playerComponent.SetPlayerState(PlayerState.Jumping);
             _rigidbody.gravityScale = JumpGravity;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, JumpForce));
         }
     }
@@ -106,5 +110,13 @@ public class PlayerJumpComponent : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(playerGroundCheckTransform.position, playerGroundCheckSize);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isGrounded())
+        {
+            playerComponent.SetPlayerState(PlayerState.Default);
+        }
     }
 }

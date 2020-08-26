@@ -49,6 +49,8 @@ public class PlayerComponent : MonoBehaviour
                 jump.enabled = true;
                 dive.enabled = false;
                 grapple.enabled = true;
+                dash.enabled = true;
+                slide.enabled = true;
                 movement.InputValue.x = input.HorizontalInput;
                 break;
             case PlayerState.Swimming:
@@ -67,6 +69,10 @@ public class PlayerComponent : MonoBehaviour
                 movement.enabled = true;
                 movement.InputValue.x = input.HorizontalInput;
                 break;
+            case PlayerState.Jumping:
+                slide.enabled = false;
+                movement.InputValue.x = input.HorizontalInput;
+                break;
             default:
                 break;
 
@@ -82,6 +88,7 @@ public class PlayerComponent : MonoBehaviour
                 movement.enabled = true;
                 jump.enabled = true;
                 dive.enabled = false;
+                slide.enabled = true;
                 break;
             case PlayerState.Swimming:
                 dive.enabled = true;
@@ -91,6 +98,11 @@ public class PlayerComponent : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public PlayerState GetPlayerState()
+    {
+        return state;
     }
 
 }
