@@ -30,7 +30,6 @@ public class PlayerMovementComponent : MonoBehaviour
     private void LateUpdate()
     {
         HandleMovement(InputValue);
-        Debug.Log(_rigidbody.velocity.x);
     }
 
     private void HandleMovement(Vector2 inputVector)
@@ -47,7 +46,7 @@ public class PlayerMovementComponent : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.Log("Movement: Player not currently touching any floors. Input handled as flat horizontal.");
+
         }
 
         if (inputVector.x != 0)

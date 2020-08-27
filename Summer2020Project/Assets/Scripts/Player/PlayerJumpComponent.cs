@@ -80,7 +80,6 @@ public class PlayerJumpComponent : MonoBehaviour
             {
                 if (tempColliders[i].gameObject.layer == 8 || tempColliders[i].gameObject.layer == 4)
                 {
-                    Debug.Log("Ground check" + tempColliders[i].gameObject.layer);
                     return true;
                 }
             }

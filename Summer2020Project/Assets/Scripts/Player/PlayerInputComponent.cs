@@ -7,6 +7,7 @@ public class PlayerInputComponent : MonoBehaviour
 {
     public float HorizontalInput { get; private set; }
     public float VerticalInput { get; private set; }
+    public Vector2 CombinedInputVector { get; private set; }
     public UnityEvent JumpPressed = new UnityEvent();
     public UnityEvent JumpReleased = new UnityEvent();
     public UnityEvent GrapplePressed = new UnityEvent();
@@ -30,6 +31,7 @@ public class PlayerInputComponent : MonoBehaviour
     {
         HorizontalInput = Input.GetAxis("Horizontal");
         VerticalInput = Input.GetAxis("Vertical");
+        CombinedInputVector = new Vector2(HorizontalInput, VerticalInput).normalized;
         if (Input.GetButtonDown("Jump"))
         {
             JumpPressed.Invoke();

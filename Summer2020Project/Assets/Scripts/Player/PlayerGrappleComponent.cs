@@ -11,19 +11,25 @@ public class PlayerGrappleComponent : MonoBehaviour
     [SerializeField]
     float GrappleProjectileSpeed;
     [SerializeField]
-    float GrappleLifespan;
+    float GrappleLenght;
     [SerializeField]
     float GrappleForce;
+    [HideInInspector]
+    public Vector2 InputVector = Vector2.zero;
 
     private GameObject launchedGrapple;
     private LineRenderer line;
 
-    PlayerComponent player;
+    private PlayerComponent player;
+
+    private Rigidbody2D _rigidbody;
 
     private void Awake()
     {
         player = GetComponent<PlayerComponent>();
         line = GetComponent<LineRenderer>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        
     }
 
     private void Update()
@@ -55,9 +61,16 @@ public class PlayerGrappleComponent : MonoBehaviour
             {
                 direction = -1;
             }
-            launchedGrapple.GetComponent<Rigidbody2D>().velocity = new Vector2(GrappleProjectileSpeed * direction, 0);
+            if(InputVector != Vector2.zero)
+            {
+                launchedGrapple.GetComponent<Rigidbody2D>().velocity = (InputVector * GrappleProjectileSpeed) + _rigidbody.velocity;
+            }
+            else
+            {
+                launchedGrapple.GetComponent<Rigidbody2D>().velocity = (new Vector2(direction, 0) * GrappleProjectileSpeed) + _rigidbody.velocity;
+            }
             grappleBehaviour.ParentBody = GetComponent<Rigidbody2D>();
-            grappleBehaviour.Lifespan = GrappleLifespan;
+            grappleBehaviour.LenghtSpan = GrappleLenght;
             grappleBehaviour.GrappleForce = GrappleForce;
         }
     }

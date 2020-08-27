@@ -7,8 +7,8 @@ public class GrappleProjectileBehaviourComponent : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D ParentBody;
     [HideInInspector]
-    public float Lifespan = 1;
-    private float currentlifetime = 0;
+    public float LenghtSpan = 7;
+    private float CurrentLength = 0;
     [HideInInspector]
     public float GrappleForce;
 
@@ -17,7 +17,7 @@ public class GrappleProjectileBehaviourComponent : MonoBehaviour
         if(collision.gameObject.layer == 8)
         {
             Vector2 forceVector = CalculateForceVector();
-            ParentBody.AddForceAtPosition(forceVector * GrappleForce, ParentBody.gameObject.transform.position, ForceMode2D.Impulse);
+            ParentBody.AddForce(forceVector * GrappleForce, ForceMode2D.Impulse);
             Destroy(gameObject);
         }
     }
@@ -32,13 +32,9 @@ public class GrappleProjectileBehaviourComponent : MonoBehaviour
 
     private void Update()
     {
-        if(currentlifetime >= Lifespan)
+        if (Vector2.Distance(ParentBody.transform.position, transform.position) >= LenghtSpan)
         {
             Destroy(gameObject);
-        }
-        else
-        {
-            currentlifetime += Time.deltaTime;
         }
     }
 }

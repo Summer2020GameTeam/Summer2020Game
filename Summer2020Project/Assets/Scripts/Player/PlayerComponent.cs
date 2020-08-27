@@ -45,33 +45,21 @@ public class PlayerComponent : MonoBehaviour
         switch (state)
         {
             case PlayerState.Default:
-                movement.enabled = true;
-                jump.enabled = true;
-                dive.enabled = false;
-                grapple.enabled = true;
-                dash.enabled = true;
-                slide.enabled = true;
                 movement.InputValue.x = input.HorizontalInput;
+                grapple.InputVector = input.CombinedInputVector;
                 break;
             case PlayerState.Swimming:
-                dive.enabled = true;
-                jump.enabled = false;
-                movement.enabled = false;
                 dive.InputValue = new Vector2(input.HorizontalInput, input.VerticalInput);
                 break;
             case PlayerState.Dashing:
-                jump.enabled = false;
-                movement.enabled = false;
-                grapple.enabled = false;
                 break;
             case PlayerState.Sliding:
-                dash.enabled = false;
-                movement.enabled = true;
                 movement.InputValue.x = input.HorizontalInput;
+                grapple.InputVector = input.CombinedInputVector;
                 break;
             case PlayerState.Jumping:
-                slide.enabled = false;
                 movement.InputValue.x = input.HorizontalInput;
+                grapple.InputVector = input.CombinedInputVector;
                 break;
             default:
                 break;
@@ -88,12 +76,41 @@ public class PlayerComponent : MonoBehaviour
                 movement.enabled = true;
                 jump.enabled = true;
                 dive.enabled = false;
+                grapple.enabled = true;
+                dash.enabled = true;
                 slide.enabled = true;
                 break;
             case PlayerState.Swimming:
-                dive.enabled = true;
-                jump.enabled = false;
                 movement.enabled = false;
+                jump.enabled = false;
+                dive.enabled = true;
+                grapple.enabled = false;
+                dash.enabled = false;
+                slide.enabled = false;
+                break;
+            case PlayerState.Dashing:
+                movement.enabled = false;
+                jump.enabled = false;
+                dive.enabled = false;
+                grapple.enabled = false;
+                dash.enabled = true;
+                slide.enabled = true;
+                break;
+            case PlayerState.Sliding:
+                movement.enabled = true;
+                jump.enabled = true;
+                dive.enabled = false;
+                grapple.enabled = true;
+                dash.enabled = false;
+                slide.enabled = true;
+                break;
+            case PlayerState.Jumping:
+                movement.enabled = true;
+                jump.enabled = true;
+                dive.enabled = false;
+                grapple.enabled = true;
+                dash.enabled = true;
+                slide.enabled = false;
                 break;
             default:
                 break;

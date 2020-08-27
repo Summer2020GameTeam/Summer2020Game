@@ -80,7 +80,7 @@ public class PlayerSlideComponent : MonoBehaviour
             }
             catch(System.Exception e) 
             {
-                Debug.Log("Slide: Unable to get new angle, using old one...");
+
             }
 
             if(contacts.Count > 0)
@@ -129,7 +129,6 @@ public class PlayerSlideComponent : MonoBehaviour
             }
 
             _rigidbody.AddForce(normal * ((boostMultiplier * (1 - (CurrentTime / SlideTimer))) - (boostMultiplier/4) * (CurrentTime / SlideTimer)) * Time.deltaTime);
-            Debug.Log("Slide timer: " + CurrentTime + " Vector: " + normal.ToString() + " Boost multiplier: " + boostMultiplier);
             CurrentTime += Time.deltaTime;
             yield return null;
         }
