@@ -77,12 +77,10 @@ public class PlayerDashComponent : MonoBehaviour
     private IEnumerator DashTimer()
     {
         yield return new WaitForSeconds(DashTime);
-        _rigidbody.velocity = new Vector2(0, 1f);
-        yield return new WaitForSeconds(0.1f);
         _rigidbody.gravityScale = savedGravityScale;
 
         //Keep player momentum after dash.
-        _rigidbody.velocity = new Vector2(savedVelocity * 1.05f, 0);
+        _rigidbody.velocity = new Vector2(savedVelocity * 1.05f, 5);
         player.SetPlayerState(PlayerState.Default);
     }
 

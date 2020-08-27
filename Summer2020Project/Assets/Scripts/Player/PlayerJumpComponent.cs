@@ -24,10 +24,12 @@ public class PlayerJumpComponent : MonoBehaviour
 
     private string lastJumpButtonPressed;
     private Rigidbody2D _rigidbody;
+    private PlayerComponent playerComponent;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        playerComponent = GetComponent<PlayerComponent>();
     }
 
     private void OnEnable()
@@ -52,7 +54,9 @@ public class PlayerJumpComponent : MonoBehaviour
         if (isGrounded() && enabled)
         {
             currentJumpTime = 0;
+            playerComponent.SetPlayerState(PlayerState.Jumping);
             _rigidbody.gravityScale = JumpGravity;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, JumpForce));
         }
     }
@@ -66,7 +70,8 @@ public class PlayerJumpComponent : MonoBehaviour
 
     }
 
-    private bool isGrounded()
+    //Todo: Used in two different components. Refactor by making a seperate (static?) script for this. (Used by Jump and Input components).
+    public bool isGrounded()
     {
         Collider2D[] tempColliders = Physics2D.OverlapBoxAll(playerGroundCheckTransform.position, playerGroundCheckSize, 0);
         if (tempColliders != null)
@@ -84,8 +89,34 @@ public class PlayerJumpComponent : MonoBehaviour
         return false;
     }
 
+    //Todo: Un-Spaghet
+    public Collider2D getFloorCollider()
+    {
+        Collider2D[] tempColliders = Physics2D.OverlapBoxAll(playerGroundCheckTransform.position, playerGroundCheckSize, 0);
+        if (tempColliders != null)
+        {
+            for (int i = 0; i < tempColliders.Length; i++)
+            {
+                if (tempColliders[i].gameObject.layer == 8 || tempColliders[i].gameObject.layer == 4)
+                {
+                    return tempColliders[i];
+                }
+            }
+        }
+
+        return null;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(playerGroundCheckTransform.position, playerGroundCheckSize);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isGrounded())
+        {
+            playerComponent.SetPlayerState(PlayerState.Default);
+        }
     }
 }
