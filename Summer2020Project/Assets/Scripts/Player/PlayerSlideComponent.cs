@@ -13,9 +13,9 @@ public class PlayerSlideComponent : MonoBehaviour
     [SerializeField]
     private float MaxDashSpeed;
     [SerializeField]
-    private float SlideSpeed = 2000;
+    private float SlideSpeed = 6000;
 
-    public bool IsDashing { get; set; }
+    public bool IsSliding { get; set; }
     private Rigidbody2D _rigidbody;
     private PlayerComponent player;
     private PlayerMovementComponent movementComponent;
@@ -41,7 +41,7 @@ public class PlayerSlideComponent : MonoBehaviour
     public void HandleSlide()
     {
         //Asserting if slide is availible and if a surface below player is detected.
-        if (!IsDashing && enabled)
+        if (!IsSliding && enabled)
         {
             if (player.GetPlayerState() != PlayerState.Sliding)
             {
@@ -59,9 +59,11 @@ public class PlayerSlideComponent : MonoBehaviour
             //Once a contact surface has been detected and confirmed, execute actual slide logic.
             if (contacts.Count > 0)
             {
+                IsSliding = true;
                 player.SetPlayerState(PlayerState.Sliding);
                 _rigidbody.transform.localScale += new Vector3(0, -_rigidbody.transform.localScale.y / 2);
-                movementComponent.Speed = movementComponent.Speed / 2;
+                _rigidbody.transform.position = new Vector2(_rigidbody.transform.position.x, _rigidbody.transform.position.y - _rigidbody.transform.localScale.y);
+                //movementComponent.Speed = movementComponent.Speed / 2;
                 StartCoroutine(DoSlide(contacts));
             }
         }
@@ -128,6 +130,8 @@ public class PlayerSlideComponent : MonoBehaviour
                 boostMultiplier = boostMultiplier * 0.28f;
             }
 
+            //Doesn't boost good.
+            Debug.Log("Boost: " + ((boostMultiplier * (1 - (CurrentTime / SlideTimer))) - (boostMultiplier / 4) * (CurrentTime / SlideTimer)) * Time.deltaTime);
             _rigidbody.AddForce(normal * ((boostMultiplier * (1 - (CurrentTime / SlideTimer))) - (boostMultiplier/4) * (CurrentTime / SlideTimer)) * Time.deltaTime);
             CurrentTime += Time.deltaTime;
             yield return null;
@@ -139,11 +143,19 @@ public class PlayerSlideComponent : MonoBehaviour
     public IEnumerator StopSlide()
     {
         player.SetPlayerState(PlayerState.Default);
-
-        movementComponent.Speed = movementComponent.Speed * 2;
-
+        IsSliding = false;
+        //movementComponent.Speed = movementComponent.Speed * 2;
         _rigidbody.transform.localScale += new Vector3(0, _rigidbody.transform.localScale.y);
-
         yield return null;
+    }
+
+    public void OnDisable()
+    {
+        if (IsSliding)
+        {
+            StopAllCoroutines();
+            IsSliding = false;
+            _rigidbody.transform.localScale += new Vector3(0, _rigidbody.transform.localScale.y);
+        }
     }
 }

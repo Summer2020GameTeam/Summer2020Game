@@ -202,8 +202,9 @@ MonoBehaviour:
   GrappleProjectile: {fileID: 6831484520966731342, guid: b7d07f506e8546f4898fb49b00bab0fe,
     type: 3}
   GrappleProjectileSpeed: 25
-  GrappleLifespan: 0.4
+  GrappleLenght: 0
   GrappleForce: 25
+  InputVector: {x: 0, y: 0}
 --- !u!114 &3218924043605655533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   SlideFriction: 0
   MinDashSpeed: 0
   MaxDashSpeed: 0
-  SlideSpeed: 3000
+  SlideSpeed: 16000
 --- !u!1 &6999324259463563047
 GameObject:
   m_ObjectHideFlags: 0
