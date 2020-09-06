@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/IntroCave/IntroCaveJumpBasics.unity
+    guid: 6fca73a88534f394cb90758a8edbfbbf
+  - enabled: 1
+    path: Assets/Scenes/IntroCave/IntroCaveJumpTraining.unity
+    guid: 9e33f49c952926e4cacf502506e04ccc
+  - enabled: 1
+    path: Assets/Scenes/IntroCave/IntroCaveStart.unity
+    guid: 8a620dbcb2e155f419e798b18d0a6293
   m_configObjects: {}

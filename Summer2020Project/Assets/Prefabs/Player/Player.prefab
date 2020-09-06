@@ -202,8 +202,9 @@ MonoBehaviour:
   GrappleProjectile: {fileID: 6831484520966731342, guid: b7d07f506e8546f4898fb49b00bab0fe,
     type: 3}
   GrappleProjectileSpeed: 25
-  GrappleLifespan: 0.4
+  GrappleLenght: 10
   GrappleForce: 25
+  InputVector: {x: 0, y: 0}
 --- !u!114 &3218924043605655533
 MonoBehaviour:
   m_ObjectHideFlags: 0

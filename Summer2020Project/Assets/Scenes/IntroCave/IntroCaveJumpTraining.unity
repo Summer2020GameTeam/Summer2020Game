@@ -817,12 +817,12 @@ PrefabInstance:
     - target: {fileID: 3280714708804568009, guid: c6080544a1d578345b0204ff2077d9c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 91.67
       objectReference: {fileID: 0}
     - target: {fileID: 3280714708804568009, guid: c6080544a1d578345b0204ff2077d9c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.08
+      value: -1.77
       objectReference: {fileID: 0}
     - target: {fileID: 3280714708804568009, guid: c6080544a1d578345b0204ff2077d9c4,
         type: 3}
@@ -868,6 +868,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556165539078033556, guid: c6080544a1d578345b0204ff2077d9c4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556165539078033556, guid: c6080544a1d578345b0204ff2077d9c4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5132549563705773144, guid: c6080544a1d578345b0204ff2077d9c4,
+        type: 3}
+      propertyPath: ConnectedScenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5132549563705773144, guid: c6080544a1d578345b0204ff2077d9c4,
+        type: 3}
+      propertyPath: ConnectedScenes.Array.data[0]
+      value: IntroCaveJumpBasics
+      objectReference: {fileID: 0}
+    - target: {fileID: 5132549563705773144, guid: c6080544a1d578345b0204ff2077d9c4,
+        type: 3}
+      propertyPath: ConnectedScenes.Array.data[1]
+      value: IntroCaveJumpTraining
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6080544a1d578345b0204ff2077d9c4, type: 3}
